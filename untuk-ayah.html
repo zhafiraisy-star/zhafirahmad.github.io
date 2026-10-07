@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Untuk Ayah ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            color: #fff;
+
+            overflow-x: hidden;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.30),
+                    rgba(0, 0, 0, 0.30)
+                ),
+                url("assets/images/background-gold.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+
+        /* ================================
+           HERO
+        ================================= */
+
+        .hero {
+            min-height: 38vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 70px 20px 35px;
+        }
+
+        .hero-content {
+            animation: fadeUp 1.1s ease forwards;
+        }
+
+        .label {
+            display: inline-block;
+
+            padding: 8px 20px;
+
+            margin-bottom: 22px;
+
+            border: 1px solid
+                rgba(212, 175, 55, 0.6);
+
+            border-radius: 50px;
+
+            color: #e6c76a;
+
+            font-size: 13px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            background:
+                rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #f5d77a;
+
+            font-size:
+                clamp(48px, 8vw, 82px);
+
+            line-height: 1;
+
+            text-shadow:
+                0 0 20px
+                rgba(212, 175, 55, 0.25),
+
+                0 5px 25px
+                rgba(0, 0, 0, 0.75);
+        }
+
+
+        /* ================================
+           AREA AMPLOP
+        ================================= */
+
+        .letter-section {
+            width: min(900px, 94%);
+
+            margin: auto;
+
+            padding:
+                10px 0 80px;
+        }
+
+        .envelope-area {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        /* ================================
+           AMPLOP
+        ================================= */
+
+        .envelope {
+            position: relative;
+
+            width: min(500px, 92vw);
+
+            height: 315px;
+
+            cursor: pointer;
+
+            overflow: hidden;
+
+            border-radius: 12px;
+
+            filter:
+                drop-shadow(
+                    0 25px 35px
+                    rgba(0, 0, 0, 0.45)
+                );
+        }
+
+
+        /* ================================
+           BELAKANG AMPLOP
+        ================================= */
+
+        .envelope-back {
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 1;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #a87518,
+                    #e7c45d 50%,
+                    #a87518
+                );
+        }
+
+
+        /* ================================
+           KERTAS SURAT
+        ================================= */
+
+        .paper {
+            position: absolute;
+
+            z-index: 2;
+
+            left: 7%;
+
+            bottom: 8px;
+
+            width: 86%;
+
+            height: 245px;
+
+            padding: 25px;
+
+            overflow: hidden;
+
+            border-radius: 5px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fffef9,
+                    #f7efdd
+                );
+
+            color: #4b3920;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 0, 0, 0.22);
+
+            /*
+             * SEBELUM DIKLIK,
+             * KERTAS SEPENUHNYA
+             * BERADA DI DALAM AMPLOP.
+             */
+            transform:
+                translateY(100%);
+
+            transition:
+                transform 1s
+                cubic-bezier(
+                    0.22,
+                    1,
+                    0.36,
+                    1
+                );
+        }
+
+        .paper-content {
+            width: 100%;
+
+            text-align: center;
+        }
+
+        .paper-heart {
+            margin-bottom: 6px;
+
+            color: #bd8d27;
+
+            font-size: 27px;
+        }
+
+        .paper-title {
+            margin-bottom: 10px;
+
+            color: #8b681f;
+
+            font-size: 24px;
+        }
+
+        .paper-line {
+            width: 55px;
+
+            height: 1px;
+
+            margin:
+                0 auto 15px;
+
+            background:
+                #c69b35;
+        }
+
+        .paper-text {
+            color: #6b5637;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* ================================
+           DEPAN AMPLOP
+        ================================= */
+
+        .envelope-front {
+            position: absolute;
+
+            z-index: 4;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            height: 61%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #b98520,
+                    #e5c05a 50%,
+                    #b17d1b
+                );
+
+            clip-path:
+                polygon(
+                    0 0,
+                    50% 62%,
+                    100% 0,
+                    100% 100%,
+                    0 100%
+                );
+        }
+
+
+        /* ================================
+           FLAP
+        ================================= */
+
+        .flap {
+            position: absolute;
+
+            z-index: 5;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 58%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f2d87b,
+                    #d6ae43
+                );
+
+            clip-path:
+                polygon(
+                    0 0,
+                    100% 0,
+                    50% 100%
+                );
+
+            transform-origin:
+                top center;
+
+            transition:
+                transform 0.9s
+                cubic-bezier(
+                    0.22,
+                    1,
+                    0.36,
+                    1
+                );
+
+            backface-visibility:
+                hidden;
+        }
+
+
+        /* ================================
+           SEGEL
+        ================================= */
+
+        .seal {
+            position: absolute;
+
+            z-index: 6;
+
+            left: 50%;
+            top: 53%;
+
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            color: #fff3c4;
+
+            font-size: 24px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #d8b04f,
+                    #936719
+                );
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 0, 0, 0.28);
+
+            transform:
+                translate(-50%, -50%);
+
+            transition:
+                opacity 0.4s ease,
+                transform 0.4s ease;
+        }
+
+
+        /* ================================
+           PETUNJUK
+        ================================= */
+
+        .open-hint {
+            margin-top: 25px;
+
+            color: #e6c76a;
+
+            font-size: 14px;
+
+            letter-spacing: 2px;
+
+            text-align: center;
+        }
+
+
+        /* ================================
+           AMPLOP DIBUKA
+        ================================= */
+
+        .envelope.open .flap {
+            transform:
+                rotateX(180deg);
+        }
+
+        .envelope.open .paper {
+            transform:
+                translateY(-30px);
+        }
+
+        .envelope.open .seal {
+            opacity: 0;
+
+            transform:
+                translate(-50%, -50%)
+                scale(0.7);
+        }
+
+
+        /* ================================
+           SURAT
+        ================================= */
+
+        .letter {
+            display: none;
+
+            max-width: 850px;
+
+            margin:
+                35px auto 0;
+
+            padding:
+                50px
+                clamp(25px, 6vw, 65px);
+
+            border:
+                1px solid
+                rgba(212, 175, 55, 0.35);
+
+            border-radius: 20px;
+
+            background:
+                rgba(0, 0, 0, 0.52);
+
+            box-shadow:
+                0 25px 70px
+                rgba(0, 0, 0, 0.45);
+
+            backdrop-filter:
+                blur(7px);
+        }
+
+        .letter.show {
+            display: block;
+
+            animation:
+                letterAppear 1s ease forwards;
+        }
+
+        .letter-title {
+            margin-bottom: 32px;
+
+            text-align: center;
+
+            color: #f5d77a;
+
+            font-size: 34px;
+        }
+
+        .letter p {
+            margin-bottom: 22px;
+
+            color:
+                rgba(255, 255, 255, 0.86);
+
+            font-size: 17px;
+
+            line-height: 2;
+        }
+
+        .letter .salutation {
+            color: #f5d77a;
+
+            font-size: 24px;
+        }
+
+        .letter strong {
+            color: #f5d77a;
+        }
+
+        .signature {
+            margin-top: 35px;
+
+            text-align: right;
+
+            color: #f5d77a;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+        }
+
+
+        /* ================================
+           NAVIGASI
+        ================================= */
+
+        .navigation {
+            display: flex;
+
+            justify-content: center;
+
+            padding:
+                0 20px 65px;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding:
+                15px 30px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            color: #17120a;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5d77a,
+                    #c99d32
+                );
+
+            box-shadow:
+                0 10px 30px
+                rgba(212, 175, 55, 0.22);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(212, 175, 55, 0.38);
+        }
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            padding:
+                30px 20px 40px;
+
+            text-align: center;
+
+            color:
+                rgba(255, 255, 255, 0.45);
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* ================================
+           ANIMASI
+        ================================= */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+        @keyframes letterAppear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            .hero {
+                min-height: 34vh;
+
+                padding:
+                    55px 18px 30px;
+            }
+
+            .envelope {
+                width: 94vw;
+
+                height: 245px;
+            }
+
+            .paper {
+                height: 190px;
+
+                padding: 18px;
+
+                bottom: 7px;
+            }
+
+            .paper-heart {
+                font-size: 21px;
+            }
+
+            .paper-title {
+                font-size: 19px;
+            }
+
+            .paper-text {
+                font-size: 12px;
+
+                line-height: 1.5;
+            }
+
+            .seal {
+                width: 48px;
+                height: 48px;
+
+                font-size: 20px;
+            }
+
+            .letter {
+                padding:
+                    35px 22px;
+            }
+
+            .letter-title {
+                font-size: 28px;
+            }
+
+            .letter p {
+                font-size: 16px;
+
+                line-height: 1.85;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- JUDUL -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="label">
+                Bab Keempat
+            </div>
+
+            <h1>
+                Untuk Ayah ❤️
+            </h1>
+
+        </div>
+
+    </header>
+
+
+    <!-- AMPLOP -->
+
+    <main class="letter-section">
+
+        <div class="envelope-area">
+
+            <div
+                class="envelope"
+                id="envelope"
+                role="button"
+                tabindex="0"
+                aria-label="Buka surat untuk Ayah"
+            >
+
+                <div class="envelope-back"></div>
+
+
+                <!-- KERTAS DI DALAM AMPLOP -->
+
+                <div class="paper">
+
+                    <div class="paper-content">
+
+                        <div class="paper-heart">
+                            ♥
+                        </div>
+
+                        <div class="paper-title">
+                            Untuk Ayah
+                        </div>
+
+                        <div class="paper-line"></div>
+
+                        <div class="paper-text">
+                            Ada sesuatu yang ingin
+                            aku sampaikan kepada Ayah...
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flap"></div>
+
+                <div class="envelope-front"></div>
+
+                <div class="seal">
+                    ♥
+                </div>
+
+            </div>
+
+
+            <div class="open-hint">
+                ✦ Klik amplop untuk membuka surat ✦
+            </div>
+
+        </div>
+
+
+        <!-- SURAT AYAH -->
+
+        <article
+            class="letter"
+            id="letter"
+        >
+
+            <h2 class="letter-title">
+                Untuk Ayah ❤️
+            </h2>
+
+
+            <p class="salutation">
+                Ayah,
+            </p>
+
+
+            <p>
+                Mungkin selama ini aku tidak selalu
+                pandai mengungkapkan apa yang aku
+                rasakan.
+            </p>
+
+
+            <p>
+                Tetapi ada banyak hal yang ingin
+                aku sampaikan kepada Ayah.
+            </p>
+
+
+            <p>
+                Terima kasih untuk kerja keras,
+                tanggung jawab, perhatian,
+                dan semua pengorbanan yang
+                Ayah berikan untuk keluarga.
+            </p>
+
+
+            <p>
+                Aku tahu menjadi seorang Ayah
+                bukan sesuatu yang mudah.
+                Ada banyak beban yang mungkin
+                Ayah simpan sendiri demi
+                memastikan keluarga tetap baik-baik saja.
+            </p>
+
+
+            <p>
+                Terima kasih karena selalu berusaha
+                memberikan rasa aman, memberikan
+                nasihat, dan mengajarkan banyak
+                hal tentang kehidupan.
+            </p>
+
+
+            <p>
+                <strong>
+                    Aku bangga menjadi anak Ayah.
+                </strong>
+            </p>
+
+
+            <p>
+                Mungkin aku belum bisa membalas
+                semua kebaikan dan pengorbanan Ayah.
+            </p>
+
+
+            <p>
+                Tetapi aku akan terus berusaha
+                menjadi seseorang yang bisa membuat
+                Ayah bangga.
+            </p>
+
+
+            <p>
+                Semoga Ayah selalu diberikan
+                kesehatan, umur panjang,
+                kebahagiaan, dan kesempatan untuk
+                menikmati banyak hal indah
+                bersama keluarga.
+            </p>
+
+
+            <p>
+                Aku sangat menyayangi Ayah.
+                Dan aku akan selalu bersyukur
+                karena menjadi anak Ayah.
+            </p>
+
+
+            <div class="signature">
+
+                Dengan seluruh rasa sayang,<br>
+
+                <strong>
+                    Anakmu ❤️
+                </strong>
+
+            </div>
+
+        </article>
+
+    </main>
+
+
+    <!-- TOMBOL LANJUT -->
+
+    <div class="navigation">
+
+        <a
+            href="keluarga.html"
+            class="button"
+        >
+            Keluarga Kita →
+        </a>
+
+    </div>
+
+
+    <footer>
+
+        Dibuat dengan penuh cinta
+        untuk Ibu &amp; Ayah ❤️
+
+    </footer>
+
+
+    <script>
+
+        const envelope =
+            document.getElementById(
+                "envelope"
+            );
+
+        const letter =
+            document.getElementById(
+                "letter"
+            );
+
+        let opened = false;
+
+
+        function openEnvelope() {
+
+            if (opened) {
+                return;
+            }
+
+            opened = true;
+
+            envelope.classList.add(
+                "open"
+            );
+
+
+            setTimeout(
+                function () {
+
+                    letter.classList.add(
+                        "show"
+                    );
+
+                    setTimeout(
+                        function () {
+
+                            letter.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        },
+                        150
+                    );
+
+                },
+                1100
+            );
+        }
+
+
+        envelope.addEventListener(
+            "click",
+            openEnvelope
+        );
+
+
+        envelope.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    openEnvelope();
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

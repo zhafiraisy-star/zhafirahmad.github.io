@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cerita Kita — Ibu & Ayah</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            color: white;
+
+            overflow-x: hidden;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.30),
+                    rgba(0, 0, 0, 0.30)
+                ),
+                url("assets/images/background-gold.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero {
+            min-height: 48vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px 50px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+
+            animation:
+                fadeUp 1.2s ease forwards;
+        }
+
+        .label {
+            display: inline-block;
+
+            padding: 8px 20px;
+
+            margin-bottom: 22px;
+
+            border:
+                1px solid
+                rgba(212, 175, 55, 0.6);
+
+            border-radius: 50px;
+
+            color: #e6c76a;
+
+            font-size: 13px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            background:
+                rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            margin-bottom: 22px;
+
+            color: #f5d77a;
+
+            font-size:
+                clamp(48px, 8vw, 85px);
+
+            line-height: 1;
+
+            text-shadow:
+                0 0 18px
+                rgba(212, 175, 55, 0.25),
+
+                0 5px 25px
+                rgba(0, 0, 0, 0.75);
+        }
+
+        .intro {
+            max-width: 700px;
+
+            margin: auto;
+
+            color:
+                rgba(255, 255, 255, 0.84);
+
+            font-size: 18px;
+
+            line-height: 1.9;
+        }
+
+        .story {
+            width: min(950px, 92%);
+
+            margin: auto;
+
+            padding:
+                30px 0 80px;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+
+            text-align: center;
+
+            color: #f5d77a;
+
+            font-size: 32px;
+        }
+
+        /* TIMELINE */
+
+        .timeline {
+            position: relative;
+
+            max-width: 800px;
+
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            bottom: 0;
+
+            left: 50%;
+
+            width: 1px;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    rgba(212, 175, 55, 0.7),
+                    transparent
+                );
+
+            transform:
+                translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+
+            width: 50%;
+
+            padding:
+                0 40px 55px;
+
+            opacity: 0;
+
+            transform:
+                translateY(35px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .timeline-item.show {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+
+            top: 4px;
+
+            width: 13px;
+            height: 13px;
+
+            border-radius: 50%;
+
+            background: #f5d77a;
+
+            box-shadow:
+                0 0 15px
+                rgba(212, 175, 55, 0.7);
+        }
+
+        .timeline-item:nth-child(odd)
+        .timeline-dot {
+            right: -6px;
+        }
+
+        .timeline-item:nth-child(even)
+        .timeline-dot {
+            left: -6px;
+        }
+
+        .timeline-card {
+            padding: 27px;
+
+            border:
+                1px solid
+                rgba(212, 175, 55, 0.28);
+
+            border-radius: 18px;
+
+            background:
+                rgba(0, 0, 0, 0.48);
+
+            box-shadow:
+                0 18px 45px
+                rgba(0, 0, 0, 0.35);
+
+            backdrop-filter: blur(5px);
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+        .timeline-card:hover {
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(230, 199, 106, 0.7);
+        }
+
+        .year {
+            margin-bottom: 8px;
+
+            color: #d8b95f;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            font-weight: bold;
+        }
+
+        .timeline-card h2 {
+            margin-bottom: 12px;
+
+            color: #f5d77a;
+
+            font-size: 24px;
+        }
+
+        .timeline-card p {
+            color:
+                rgba(255, 255, 255, 0.75);
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+        /* QUOTE */
+
+        .quote {
+            max-width: 800px;
+
+            margin:
+                20px auto 0;
+
+            padding:
+                45px 30px;
+
+            text-align: center;
+
+            border-top:
+                1px solid
+                rgba(212, 175, 55, 0.35);
+
+            border-bottom:
+                1px solid
+                rgba(212, 175, 55, 0.35);
+        }
+
+        .quote-symbol {
+            margin-bottom: 15px;
+
+            color: #e6c76a;
+
+            font-size: 30px;
+        }
+
+        .quote p {
+            color: #f5d77a;
+
+            font-size: 22px;
+
+            line-height: 1.7;
+        }
+
+        /* BUTTON */
+
+        .navigation {
+            display: flex;
+
+            justify-content: center;
+
+            padding:
+                20px 20px 60px;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding:
+                15px 28px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            color: #17120a;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5d77a,
+                    #c99d32
+                );
+
+            box-shadow:
+                0 10px 30px
+                rgba(212, 175, 55, 0.2);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(212, 175, 55, 0.35);
+        }
+
+        footer {
+            padding:
+                30px 20px 40px;
+
+            text-align: center;
+
+            color:
+                rgba(255, 255, 255, 0.45);
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+        }
+
+        /* ANIMATION */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .hero {
+                min-height: 42vh;
+
+                padding:
+                    60px 18px 40px;
+            }
+
+            .intro {
+                font-size: 16px;
+            }
+
+            .timeline::before {
+                left: 12px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even),
+            .timeline-item:nth-child(odd) {
+
+                width: 100%;
+
+                left: 0;
+
+                padding:
+                    0 0 35px 40px;
+
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd)
+            .timeline-dot,
+            .timeline-item:nth-child(even)
+            .timeline-dot {
+
+                left: 6px;
+
+                right: auto;
+            }
+
+            .timeline-card {
+                padding: 22px;
+            }
+
+            .quote {
+                padding:
+                    35px 20px;
+            }
+
+            .quote p {
+                font-size: 19px;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration:
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    0.01ms !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="label">
+                Bab Pertama
+            </div>
+
+            <h1>
+                Sebuah Cerita
+            </h1>
+
+            <p class="intro">
+
+                Setiap keluarga memiliki cerita.
+
+                Tidak selalu sempurna,
+                tidak selalu mudah,
+
+                tetapi selalu memiliki
+                tempat khusus di hati.
+
+                <br><br>
+
+                Ini adalah sebagian kecil
+                dari cerita tentang
+                <strong>Ibu &amp; Ayah.</strong>
+
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- CERITA -->
+
+    <main class="story">
+
+        <h2 class="section-title">
+            Perjalanan — Dari Awal Hingga Sekarang
+        </h2>
+
+
+        <div class="timeline">
+
+
+            <!-- CERITA 1 -->
+
+            <article class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+
+                    <div class="year">
+                        AWAL
+                    </div>
+
+                    <h2>
+                        Sebelum Aku Hadir
+                    </h2>
+
+                    <p>
+                        Sebelum aku hadir di dunia,
+                        ada dua orang yang lebih dulu
+                        memulai perjalanan mereka.
+
+                        Dari sanalah cerita keluarga
+                        ini dimulai.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- CERITA 2 -->
+
+            <article class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+
+                    <div class="year">
+                        KEMUDIAN
+                    </div>
+
+                    <h2>
+                        Sebuah Keluarga
+                    </h2>
+
+                    <p>
+                        Hari demi hari,
+                        sebuah keluarga tumbuh.
+
+                        Rumah menjadi tempat berkumpul,
+                        tempat belajar,
+                        tempat tertawa,
+                        dan tempat pulang.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- CERITA 3 -->
+
+            <article class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+
+                    <div class="year">
+                        PERJALANAN
+                    </div>
+
+                    <h2>
+                        Hari-Hari Yang Tidak Mudah
+                    </h2>
+
+                    <p>
+                        Tidak semua hari berjalan mudah.
+
+                        Ada lelah,
+                        kekhawatiran,
+                        pengorbanan,
+                        dan banyak hal
+                        yang mungkin tidak pernah
+                        aku pahami sepenuhnya.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- CERITA 4 -->
+
+            <article class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+
+                    <div class="year">
+                        HARI INI
+                    </div>
+
+                    <h2>
+                        Aku Bisa Berdiri
+                    </h2>
+
+                    <p>
+                        Hari ini aku bisa berdiri
+                        karena ada tangan yang pernah
+                        membimbingku,
+
+                        doa yang terus mengiringiku,
+
+                        dan cinta yang tidak pernah
+                        berhenti.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- QUOTE -->
+
+        <div class="quote">
+
+            <div class="quote-symbol">
+                ✦
+            </div>
+
+            <p>
+                “Tidak semua pahlawan memakai
+                jubah. Sebagian dari mereka
+                dipanggil Ibu dan Ayah.”
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- BUTTON -->
+
+    <div class="navigation">
+
+        <a
+            href="kenangan.html"
+            class="button"
+        >
+            Lihat Kenangan →
+        </a>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        Dibuat dengan penuh cinta
+        untuk Ibu &amp; Ayah ❤️
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        const items =
+            document.querySelectorAll(
+                ".timeline-item"
+            );
+
+
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach(
+                        (entry) => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target
+                                    .classList
+                                    .add("show");
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+
+        items.forEach(
+            (item) => {
+
+                observer.observe(item);
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

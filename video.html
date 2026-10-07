@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sebuah Pesan ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.42),
+                    rgba(0,0,0,.72)
+                ),
+                url("assets/images/background-gold.png");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 950px;
+
+            margin: auto;
+
+            padding:
+                90px 0 70px;
+        }
+
+        .chapter {
+            text-align: center;
+
+            color: #c99d32;
+
+            font-size: 12px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+
+            color: #f5d77a;
+
+            font-size:
+                clamp(42px, 8vw, 70px);
+
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            max-width: 650px;
+
+            margin:
+                0 auto 50px;
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.72);
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+        /* VIDEO */
+
+        .video-box {
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 22px;
+
+            border:
+                1px solid
+                rgba(245,215,122,.4);
+
+            background: #000;
+
+            box-shadow:
+                0 25px 65px
+                rgba(0,0,0,.55);
+        }
+
+        .video-box video {
+            display: block;
+
+            width: 100%;
+
+            max-height: 650px;
+
+            background: #000;
+        }
+
+        /* FOTO */
+
+        .photos {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-top: 30px;
+        }
+
+        .photos img {
+            display: block;
+
+            width: 100%;
+
+            aspect-ratio: 1 / 1;
+
+            object-fit: cover;
+
+            border-radius: 15px;
+
+            border:
+                1px solid
+                rgba(245,215,122,.25);
+
+            transition: .35s ease;
+        }
+
+        .photos img:hover {
+            transform:
+                translateY(-5px)
+                scale(1.02);
+
+            border-color:
+                rgba(245,215,122,.6);
+        }
+
+        /* PESAN */
+
+        .message {
+            margin-top: 45px;
+
+            padding: 40px 30px;
+
+            text-align: center;
+
+            border-top:
+                1px solid
+                rgba(245,215,122,.35);
+
+            border-bottom:
+                1px solid
+                rgba(245,215,122,.35);
+        }
+
+        .message p {
+            margin-bottom: 22px;
+
+            color:
+                rgba(255,255,255,.82);
+
+            font-size: 18px;
+
+            line-height: 1.9;
+        }
+
+        .message .highlight {
+            color: #f5d77a;
+
+            font-size: 22px;
+        }
+
+        /* PENUTUP */
+
+        .closing {
+            margin-top: 50px;
+
+            text-align: center;
+        }
+
+        .closing p {
+            color:
+                rgba(255,255,255,.65);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+        .heart {
+            margin-top: 25px;
+
+            color: #f5d77a;
+
+            font-size: 45px;
+
+            animation:
+                heartbeat 1.8s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        /* BUTTON */
+
+        .navigation {
+            margin-top: 50px;
+
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 15px 32px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            color: #17120a;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5d77a,
+                    #c99d32
+                );
+
+            box-shadow:
+                0 10px 30px
+                rgba(212,175,55,.25);
+
+            transition: .3s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(212,175,55,.4);
+        }
+
+        footer {
+            padding:
+                20px 20px 40px;
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-family: Arial, sans-serif;
+
+            font-size: 12px;
+        }
+
+        @media (max-width: 650px) {
+
+            .container {
+                padding-top: 65px;
+            }
+
+            .intro {
+                font-size: 15px;
+            }
+
+            .photos {
+                grid-template-columns: 1fr;
+            }
+
+            .message {
+                padding:
+                    30px 20px;
+            }
+
+            .message p {
+                font-size: 16px;
+            }
+
+            .message .highlight {
+                font-size: 20px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="container">
+
+        <div class="chapter">
+            Sebuah Pesan
+        </div>
+
+        <h1>
+            Untuk Ibu &amp; Ayah
+        </h1>
+
+        <p class="intro">
+            Ada beberapa hal yang terkadang sulit
+            untuk diucapkan secara langsung.
+            Jadi, biarkan video ini menyampaikan
+            sedikit dari apa yang ada di hati.
+        </p>
+
+
+        <!-- VIDEO -->
+
+        <div class="video-box">
+
+            <video
+                controls
+                playsinline
+                preload="metadata"
+            >
+
+                <source
+                    src="assets/videos/pesan-untuk-orang-tua.mp4"
+                    type="video/mp4"
+                >
+
+                Browser kamu tidak mendukung
+                pemutaran video.
+
+            </video>
+
+        </div>
+
+
+        <!-- FOTO -->
+
+        <div class="photos">
+
+            <img
+                src="assets/images/kenangan-01.jpg"
+                alt="Kenangan keluarga"
+            >
+
+            <img
+                src="assets/images/kenangan-02.jpg"
+                alt="Kenangan keluarga"
+            >
+
+            <img
+                src="assets/images/kenangan-03.jpg"
+                alt="Kenangan keluarga"
+            >
+
+        </div>
+
+
+        <!-- PESAN -->
+
+        <section class="message">
+
+            <p>
+                Setiap foto, setiap video, dan setiap
+                cerita mungkin hanya terlihat seperti
+                hal sederhana.
+            </p>
+
+            <p class="highlight">
+                Tetapi semuanya memiliki satu arti:
+                aku bersyukur pernah dan masih bisa
+                menjalani hidup bersama kalian.
+            </p>
+
+            <p>
+                Terima kasih sudah menjadi rumah
+                tempat aku selalu bisa pulang.
+            </p>
+
+        </section>
+
+
+        <!-- PENUTUP -->
+
+        <section class="closing">
+
+            <p>
+                Mungkin video ini akan selesai,
+                tetapi cerita tentang keluarga kita
+                masih akan terus berjalan.
+            </p>
+
+            <div class="heart">
+                ❤️
+            </div>
+
+        </section>
+
+
+        <!-- LANJUT -->
+
+        <div class="navigation">
+
+            <a
+                href="album.html"
+                class="button"
+            >
+                Lanjut ke Album Kenangan ✦
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        Dibuat dengan penuh cinta untuk
+        Ibu &amp; Ayah ❤️
+    </footer>
+
+</body>
+
+</html>

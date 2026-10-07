@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Terima Kasih ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.45),
+                    rgba(0,0,0,.78)
+                ),
+                url("assets/images/background-gold.png");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           HALAMAN
+        ========================= */
+
+        .container {
+            width: 92%;
+            max-width: 850px;
+
+            margin: auto;
+
+            padding:
+                100px 0 80px;
+
+            text-align: center;
+        }
+
+
+        .chapter {
+            margin-bottom: 18px;
+
+            color: #c99d32;
+
+            font-size: 12px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            animation:
+                fadeUp 1s ease;
+        }
+
+
+        h1 {
+            margin-bottom: 35px;
+
+            color: #f5d77a;
+
+            font-size:
+                clamp(48px, 10vw, 85px);
+
+            line-height: 1.1;
+
+            text-shadow:
+                0 0 30px
+                rgba(245,215,122,.2);
+
+            animation:
+                fadeUp 1.2s ease;
+        }
+
+
+        /* =========================
+           HATI
+        ========================= */
+
+        .heart {
+            margin:
+                10px 0 45px;
+
+            color: #f5d77a;
+
+            font-size: 70px;
+
+            animation:
+                heartbeat 1.8s infinite;
+        }
+
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+
+        /* =========================
+           PESAN
+        ========================= */
+
+        .letter {
+            padding:
+                45px 35px;
+
+            border:
+                1px solid
+                rgba(245,215,122,.35);
+
+            border-radius: 22px;
+
+            background:
+                rgba(0,0,0,.43);
+
+            backdrop-filter: blur(8px);
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,.45);
+
+            animation:
+                fadeUp 1.4s ease;
+        }
+
+
+        .letter p {
+            margin-bottom: 25px;
+
+            color:
+                rgba(255,255,255,.82);
+
+            font-size: 18px;
+
+            line-height: 2;
+        }
+
+
+        .letter .opening {
+            color: #f5d77a;
+
+            font-size: 24px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .letter .important {
+            color: #f5d77a;
+
+            font-size: 21px;
+        }
+
+
+        .letter .final {
+            margin-top: 35px;
+
+            color: #f5d77a;
+
+            font-size: 24px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           TANDA TANGAN
+        ========================= */
+
+        .signature {
+            margin-top: 45px;
+
+            color:
+                rgba(255,255,255,.75);
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+
+        .signature strong {
+            display: block;
+
+            margin-top: 8px;
+
+            color: #f5d77a;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================
+           GARIS
+        ========================= */
+
+        .divider {
+            width: 100px;
+
+            height: 1px;
+
+            margin:
+                50px auto;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent,
+                    #c99d32,
+                    transparent
+                );
+        }
+
+
+        /* =========================
+           TOMBOL
+        ========================= */
+
+        .navigation {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin-top: 55px;
+        }
+
+
+        .button {
+            display: inline-block;
+
+            padding:
+                15px 30px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            color: #17120a;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5d77a,
+                    #c99d32
+                );
+
+            box-shadow:
+                0 10px 30px
+                rgba(212,175,55,.25);
+
+            transition: .3s ease;
+        }
+
+
+        .button:hover {
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(212,175,55,.4);
+        }
+
+
+        .button.secondary {
+            color:
+                rgba(255,255,255,.8);
+
+            background:
+                rgba(255,255,255,.08);
+
+            border:
+                1px solid
+                rgba(245,215,122,.35);
+
+            box-shadow: none;
+        }
+
+
+        .button.secondary:hover {
+            background:
+                rgba(255,255,255,.13);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding:
+                20px 20px 40px;
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-family: Arial, sans-serif;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           ANIMASI
+        ========================= */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding-top: 70px;
+            }
+
+            .letter {
+                padding:
+                    32px 20px;
+            }
+
+            .letter p {
+                font-size: 16px;
+
+                line-height: 1.9;
+            }
+
+            .letter .opening {
+                font-size: 21px;
+            }
+
+            .letter .important {
+                font-size: 19px;
+            }
+
+            .letter .final {
+                font-size: 21px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="container">
+
+        <div class="chapter">
+            Sebuah Pesan Terakhir
+        </div>
+
+
+        <h1>
+            Terima Kasih
+        </h1>
+
+
+        <div class="heart">
+            ❤️
+        </div>
+
+
+        <!-- =========================
+             SURAT TERAKHIR
+        ========================= -->
+
+        <section class="letter">
+
+            <p class="opening">
+                Ibu dan Ayah,
+            </p>
+
+
+            <p>
+                Mungkin perjalanan kecil ini tidak akan
+                pernah cukup untuk membalas semua yang
+                telah kalian berikan kepadaku.
+            </p>
+
+
+            <p>
+                Terima kasih untuk setiap doa,
+                setiap perhatian, setiap nasihat,
+                setiap pengorbanan, dan setiap
+                perjuangan yang mungkin tidak selalu
+                aku lihat.
+            </p>
+
+
+            <p class="important">
+                Terima kasih karena selalu menjadi
+                tempat untuk pulang.
+            </p>
+
+
+            <p>
+                Aku sangat bersyukur menjadi anak
+                Ibu dan Ayah.
+            </p>
+
+
+            <p>
+                Aku mungkin belum sempurna,
+                tetapi aku akan terus berusaha
+                menjadi seseorang yang bisa membuat
+                kalian bangga.
+            </p>
+
+
+            <p>
+                Semoga kita selalu diberikan
+                kesehatan, kebahagiaan, dan banyak
+                waktu untuk menciptakan kenangan
+                baru bersama.
+            </p>
+
+
+            <div class="divider"></div>
+
+
+            <p class="final">
+                Aku sayang Ibu &amp; Ayah.<br>
+                Selamanya.
+            </p>
+
+
+            <div class="signature">
+
+                Dengan seluruh rasa sayang,
+
+                <strong>
+                    Anakmu ❤️
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             NAVIGASI AKHIR
+        ========================= -->
+
+        <div class="navigation">
+
+            <a
+                href="album.html"
+                class="button secondary"
+            >
+                ← Kembali ke Album
+            </a>
+
+
+            <a
+                href="index.html"
+                class="button"
+            >
+                🏠 Kembali ke Awal
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        Dibuat dengan penuh cinta untuk
+        Ibu &amp; Ayah ❤️
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sebuah Kejutan ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, .45),
+                    rgba(0, 0, 0, .7)
+                ),
+                url("assets/images/background-gold.png");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           OVERLAY KEJUTAN
+        ========================= */
+
+        .surprise-screen {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 100;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(150,110,30,.2),
+                    rgba(0,0,0,.97)
+                );
+
+            transition:
+                opacity .8s ease,
+                visibility .8s ease;
+        }
+
+        .surprise-screen.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .surprise-box {
+            max-width: 650px;
+
+            animation:
+                surpriseIn 1s ease;
+        }
+
+        .small-title {
+            margin-bottom: 18px;
+
+            color: #d7b55b;
+
+            font-size: 13px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+        }
+
+        .surprise-box h1 {
+            margin-bottom: 20px;
+
+            color: #f5d77a;
+
+            font-size:
+                clamp(38px, 8vw, 70px);
+
+            text-shadow:
+                0 0 30px
+                rgba(245,215,122,.2);
+        }
+
+        .surprise-box p {
+            margin-bottom: 35px;
+
+            color:
+                rgba(255,255,255,.75);
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .open-button {
+            padding: 16px 35px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            cursor: pointer;
+
+            color: #17120a;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5d77a,
+                    #c99d32
+                );
+
+            box-shadow:
+                0 12px 35px
+                rgba(212,175,55,.3);
+
+            transition: .3s ease;
+        }
+
+        .open-button:hover {
+            transform: translateY(-5px) scale(1.03);
+
+            box-shadow:
+                0 18px 45px
+                rgba(212,175,55,.45);
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            width: 92%;
+
+            max-width: 900px;
+
+            margin: auto;
+
+            padding:
+                100px 0 80px;
+
+            opacity: 0;
+
+            transform: translateY(30px);
+
+            transition:
+                opacity 1s ease,
+                transform 1s ease;
+        }
+
+        .content.show {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        .chapter {
+            margin-bottom: 15px;
+
+            text-align: center;
+
+            color: #c99d32;
+
+            font-size: 12px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+        }
+
+        .title {
+            margin-bottom: 50px;
+
+            text-align: center;
+
+            color: #f5d77a;
+
+            font-size:
+                clamp(38px, 7vw, 65px);
+        }
+
+
+        /* =========================
+           PESAN
+        ========================= */
+
+        .message {
+            padding: 45px 35px;
+
+            border:
+                1px solid
+                rgba(245,215,122,.3);
+
+            border-radius: 22px;
+
+            background:
+                rgba(0,0,0,.42);
+
+            backdrop-filter: blur(8px);
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,.4);
+
+            text-align: center;
+        }
+
+        .message p {
+            margin-bottom: 25px;
+
+            color:
+                rgba(255,255,255,.82);
+
+            font-size: 18px;
+
+            line-height: 2;
+        }
+
+        .message .highlight {
+            color: #f5d77a;
+
+            font-size: 25px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FOTO
+        ========================= */
+
+        .family-photo {
+            width: 100%;
+
+            margin:
+                40px auto;
+
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            border:
+                1px solid
+                rgba(245,215,122,.35);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.5);
+        }
+
+        .family-photo img {
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+        }
+
+
+        /* =========================
+           HEART
+        ========================= */
+
+        .heart {
+            margin: 35px 0;
+
+            text-align: center;
+
+            color: #f5d77a;
+
+            font-size: 55px;
+
+            animation:
+                heartbeat 1.8s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navigation {
+            margin-top: 50px;
+
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 15px 30px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            color: #17120a;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5d77a,
+                    #c99d32
+                );
+
+            box-shadow:
+                0 10px 30px
+                rgba(212,175,55,.25);
+
+            transition: .3s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(212,175,55,.4);
+        }
+
+
+        footer {
+            padding: 20px;
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-family: Arial, sans-serif;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        @keyframes surpriseIn {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(.8)
+                    translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .content {
+                padding-top: 80px;
+            }
+
+            .message {
+                padding:
+                    30px 20px;
+            }
+
+            .message p {
+                font-size: 16px;
+            }
+
+            .message .highlight {
+                font-size: 21px;
+            }
+
+            .surprise-box p {
+                font-size: 15px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         LAYAR KEJUTAN
+    ========================= -->
+
+    <div
+        class="surprise-screen"
+        id="surpriseScreen"
+    >
+
+        <div class="surprise-box">
+
+            <div class="small-title">
+                Sebuah Pesan Untuk Kalian
+            </div>
+
+            <h1>
+                Ada Sesuatu<br>
+                Untuk Ibu &amp; Ayah ❤️
+            </h1>
+
+            <p>
+                Sebelum melanjutkan perjalanan ini,
+                ada satu hal yang ingin aku sampaikan
+                kepada dua orang yang paling berarti
+                dalam hidupku.
+            </p>
+
+            <button
+                class="open-button"
+                onclick="openSurprise()"
+            >
+                ✦ Buka Kejutan ✦
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ISI KEJUTAN
+    ========================= -->
+
+    <main
+        class="content"
+        id="content"
+    >
+
+        <div class="chapter">
+            Sebuah Kejutan
+        </div>
+
+        <h1 class="title">
+            Untuk Ibu &amp; Ayah
+        </h1>
+
+
+        <section class="message">
+
+            <p>
+                Ibu dan Ayah,
+            </p>
+
+            <p>
+                Terima kasih karena telah menjadi
+                rumah terbaik yang pernah aku miliki.
+            </p>
+
+            <p>
+                Terima kasih untuk setiap doa,
+                setiap perhatian, setiap pengorbanan,
+                dan setiap perjuangan yang mungkin
+                tidak selalu bisa aku lihat.
+            </p>
+
+            <p>
+                Aku mungkin belum bisa membalas
+                semuanya.
+            </p>
+
+            <p>
+                Tetapi aku ingin Ibu dan Ayah tahu
+                satu hal...
+            </p>
+
+            <p class="highlight">
+                Aku sangat bersyukur menjadi
+                anak kalian.
+            </p>
+
+            <p>
+                Dan selama aku masih memiliki
+                kesempatan, aku akan terus berusaha
+                membuat kalian bangga.
+            </p>
+
+        </section>
+
+
+        <!-- FOTO KELUARGA -->
+
+        <div class="family-photo">
+
+            <img
+                src="assets/images/keluarga.jpg"
+                alt="Keluarga Kita"
+            >
+
+        </div>
+
+
+        <div class="heart">
+            ❤️
+        </div>
+
+
+        <section class="message">
+
+            <p class="highlight">
+                Aku Sayang Ibu &amp; Ayah.
+            </p>
+
+            <p>
+                Lebih dari yang mungkin bisa
+                aku ungkapkan melalui kata-kata.
+            </p>
+
+        </section>
+
+
+        <!-- NAVIGASI -->
+
+        <div class="navigation">
+
+            <a
+                href="video.html"
+                class="button"
+            >
+                Lanjut ke Sebuah Pesan ✦
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        Dibuat dengan penuh cinta untuk Ibu &amp; Ayah ❤️
+    </footer>
+
+
+    <script>
+
+        function openSurprise() {
+
+            const screen =
+                document.getElementById(
+                    "surpriseScreen"
+                );
+
+            const content =
+                document.getElementById(
+                    "content"
+                );
+
+            screen.classList.add("hide");
+
+            setTimeout(function () {
+
+                content.classList.add("show");
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }, 500);
+        }
+
+    </script>
+
+
+</body>
+
+</html>

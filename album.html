@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Album Kenangan ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.42),
+                    rgba(0,0,0,.75)
+                ),
+                url("assets/images/background-gold.png");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding:
+                90px 0 80px;
+        }
+
+        .chapter {
+            text-align: center;
+
+            color: #c99d32;
+
+            font-size: 12px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+
+            color: #f5d77a;
+
+            font-size:
+                clamp(42px, 8vw, 70px);
+
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            max-width: 650px;
+
+            margin:
+                0 auto 60px;
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.72);
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+        /* =========================
+           ALBUM
+        ========================= */
+
+        .album {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 28px;
+        }
+
+        .memory {
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            border:
+                1px solid
+                rgba(245,215,122,.28);
+
+            background:
+                rgba(0,0,0,.45);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.4);
+
+            backdrop-filter: blur(7px);
+
+            transition: .35s ease;
+        }
+
+        .memory:hover {
+            transform: translateY(-7px);
+
+            border-color:
+                rgba(245,215,122,.65);
+
+            box-shadow:
+                0 25px 60px
+                rgba(0,0,0,.55);
+        }
+
+        .memory-image {
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .memory-image img {
+            display: block;
+
+            width: 100%;
+
+            aspect-ratio: 16 / 10;
+
+            object-fit: cover;
+
+            transition: .5s ease;
+        }
+
+        .memory:hover .memory-image img {
+            transform: scale(1.05);
+        }
+
+        .memory-number {
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            color: #17120a;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5d77a,
+                    #c99d32
+                );
+        }
+
+        .memory-content {
+            padding: 25px;
+        }
+
+        .memory-content h2 {
+            color: #f5d77a;
+
+            font-size: 24px;
+
+            margin-bottom: 10px;
+        }
+
+        .memory-content p {
+            color:
+                rgba(255,255,255,.7);
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           PESAN AKHIR ALBUM
+        ========================= */
+
+        .album-message {
+            max-width: 800px;
+
+            margin:
+                70px auto 0;
+
+            padding: 45px 30px;
+
+            text-align: center;
+
+            border-top:
+                1px solid
+                rgba(245,215,122,.35);
+
+            border-bottom:
+                1px solid
+                rgba(245,215,122,.35);
+        }
+
+        .album-message .symbol {
+            margin-bottom: 15px;
+
+            color: #f5d77a;
+
+            font-size: 40px;
+        }
+
+        .album-message p {
+            margin-bottom: 20px;
+
+            color:
+                rgba(255,255,255,.78);
+
+            font-size: 18px;
+
+            line-height: 1.9;
+        }
+
+        .album-message .highlight {
+            color: #f5d77a;
+
+            font-size: 21px;
+        }
+
+
+        /* =========================
+           NAVIGASI
+        ========================= */
+
+        .navigation {
+            margin-top: 55px;
+
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 16px 32px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            color: #17120a;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5d77a,
+                    #c99d32
+                );
+
+            box-shadow:
+                0 10px 30px
+                rgba(212,175,55,.25);
+
+            transition: .3s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(212,175,55,.4);
+        }
+
+
+        footer {
+            padding:
+                20px 20px 40px;
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.4);
+
+            font-family: Arial, sans-serif;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           LIGHTBOX
+        ========================= */
+
+        .lightbox {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 100;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            background:
+                rgba(0,0,0,.92);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: .3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+
+            max-height: 90vh;
+
+            object-fit: contain;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 20px 70px
+                rgba(0,0,0,.8);
+        }
+
+        .close {
+            position: fixed;
+
+            top: 20px;
+            right: 25px;
+
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            color: white;
+
+            font-size: 25px;
+
+            background:
+                rgba(255,255,255,.12);
+
+            transition: .3s ease;
+        }
+
+        .close:hover {
+            background:
+                rgba(255,255,255,.22);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .container {
+                padding-top: 65px;
+            }
+
+            .intro {
+                font-size: 15px;
+            }
+
+            .album {
+                grid-template-columns: 1fr;
+
+                gap: 22px;
+            }
+
+            .memory-content {
+                padding: 20px;
+            }
+
+            .memory-content h2 {
+                font-size: 21px;
+            }
+
+            .album-message {
+                padding:
+                    35px 20px;
+            }
+
+            .album-message p {
+                font-size: 16px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="container">
+
+        <div class="chapter">
+            Sebuah Koleksi Kenangan
+        </div>
+
+        <h1>
+            Album Kenangan ❤️
+        </h1>
+
+        <p class="intro">
+            Foto mungkin hanya menangkap satu detik,
+            tetapi kenangan membuat detik itu hidup
+            selamanya.
+        </p>
+
+
+        <!-- =========================
+             ALBUM
+        ========================= -->
+
+        <section class="album">
+
+
+            <!-- 01 -->
+
+            <article class="memory">
+
+                <div class="memory-image">
+
+                    <img
+                        src="assets/images/kenangan-01.jpg"
+                        alt="Awal Sebuah Cerita"
+                        onclick="openImage(this.src)"
+                    >
+
+                    <div class="memory-number">
+                        01
+                    </div>
+
+                </div>
+
+                <div class="memory-content">
+
+                    <h2>
+                        Awal Sebuah Cerita
+                    </h2>
+
+                    <p>
+                        Semua perjalanan besar selalu
+                        dimulai dari sebuah awal kecil.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 02 -->
+
+            <article class="memory">
+
+                <div class="memory-image">
+
+                    <img
+                        src="assets/images/kenangan-02.jpg"
+                        alt="Momen Sederhana"
+                        onclick="openImage(this.src)"
+                    >
+
+                    <div class="memory-number">
+                        02
+                    </div>
+
+                </div>
+
+                <div class="memory-content">
+
+                    <h2>
+                        Momen Sederhana
+                    </h2>
+
+                    <p>
+                        Mungkin sederhana, tetapi justru
+                        momen seperti inilah yang paling
+                        dirindukan.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 03 -->
+
+            <article class="memory">
+
+                <div class="memory-image">
+
+                    <img
+                        src="assets/images/kenangan-03.jpg"
+                        alt="Bersama"
+                        onclick="openImage(this.src)"
+                    >
+
+                    <div class="memory-number">
+                        03
+                    </div>
+
+                </div>
+
+                <div class="memory-content">
+
+                    <h2>
+                        Bersama
+                    </h2>
+
+                    <p>
+                        Karena kebahagiaan terasa berbeda
+                        ketika kita menikmatinya bersama.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 04 -->
+
+            <article class="memory">
+
+                <div class="memory-image">
+
+                    <img
+                        src="assets/images/kenangan-04.jpg"
+                        alt="Hari Yang Indah"
+                        onclick="openImage(this.src)"
+                    >
+
+                    <div class="memory-number">
+                        04
+                    </div>
+
+                </div>
+
+                <div class="memory-content">
+
+                    <h2>
+                        Hari Yang Indah
+                    </h2>
+
+                    <p>
+                        Satu hari, satu kenangan, satu
+                        cerita yang akan selalu tersimpan.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 05 -->
+
+            <article class="memory">
+
+                <div class="memory-image">
+
+                    <img
+                        src="assets/images/kenangan-05.jpg"
+                        alt="Tawa"
+                        onclick="openImage(this.src)"
+                    >
+
+                    <div class="memory-number">
+                        05
+                    </div>
+
+                </div>
+
+                <div class="memory-content">
+
+                    <h2>
+                        Tawa
+                    </h2>
+
+                    <p>
+                        Ada banyak alasan untuk tersenyum
+                        ketika keluarga berkumpul.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 06 -->
+
+            <article class="memory">
+
+                <div class="memory-image">
+
+                    <img
+                        src="assets/images/kenangan-06.jpg"
+                        alt="Sampai Hari Ini"
+                        onclick="openImage(this.src)"
+                    >
+
+                    <div class="memory-number">
+                        06
+                    </div>
+
+                </div>
+
+                <div class="memory-content">
+
+                    <h2>
+                        Sampai Hari Ini
+                    </h2>
+
+                    <p>
+                        Cerita kita belum selesai.
+                        Masih banyak halaman yang akan
+                        kita tulis bersama.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =========================
+             PESAN
+        ========================= -->
+
+        <section class="album-message">
+
+            <div class="symbol">
+                ✦
+            </div>
+
+            <p>
+                Setiap foto di sini adalah bagian kecil
+                dari perjalanan besar keluarga kita.
+            </p>
+
+            <p class="highlight">
+                Dan satu hal yang tidak pernah berubah:
+                aku akan selalu bersyukur memiliki
+                Ibu dan Ayah.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             TOMBOL
+        ========================= -->
+
+        <div class="navigation">
+
+            <a
+                href="terima-kasih.html"
+                class="button"
+            >
+                Pesan Terakhir ❤️
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        Dibuat dengan penuh cinta untuk
+        Ibu &amp; Ayah ❤️
+    </footer>
+
+
+    <!-- =========================
+         LIGHTBOX
+    ========================= -->
+
+    <div
+        class="lightbox"
+        id="lightbox"
+        onclick="closeImage()"
+    >
+
+        <button
+            class="close"
+            onclick="closeImage()"
+        >
+            ×
+        </button>
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt="Preview"
+            onclick="event.stopPropagation()"
+        >
+
+    </div>
+
+
+    <script>
+
+        function openImage(src) {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const image =
+                document.getElementById("lightboxImage");
+
+            image.src = src;
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+        }
+
+
+        function closeImage() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            lightbox.classList.remove("active");
+
+            document.body.style.overflow = "";
+        }
+
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+                    closeImage();
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
